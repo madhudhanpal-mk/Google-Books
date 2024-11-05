@@ -14,8 +14,10 @@ def index():
         my_data = [
             {
                 'book_title': response['items'][0]['volumeInfo']['title'],
-                'price' : response['items'][1]['saleInfo']['listPrice']['amount'],
+                'price' : response['items'][0]['saleInfo']['listPrice']['amount']
             }
+
+        
         ]
         return render_template('index.html',my_data=my_data)
     return render_template('index.html')
