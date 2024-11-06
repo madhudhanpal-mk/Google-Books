@@ -28,26 +28,31 @@
   </div>
   <div class="col-3"></div>
 </div>
-<br><hr>
- <div class="container">
-  <h2>Book Details</h2>           
+<br>
+<hr>
+<div class="container">
+  <h2>Book Details</h2>
   <table class="table table-hover">
     <thead>
       <tr>
         <th>Title</th>
+        <th>Authors</th>
         <th>Price</th>
       </tr>
     </thead>
-    {% for key, value in data.items() %}
+    
     <tbody>
-      <tr>
-        <td>{{ key }}</td>
-        <td>{{ value }}</td>
-      </tr>
+      {% for record in Mydb %}
+        <tr>
+          <td> {{ record['title'] }} </td>
+          <td> {{ record['authors'][0] }} </td>
+          <td> {{ record['price'] }} </td>
+        </tr>
       {% endfor %}
+
     </tbody>
   </table>
 
 
 
-{% endblock %}
+  {% endblock %}
