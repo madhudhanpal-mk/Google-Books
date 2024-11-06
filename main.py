@@ -11,19 +11,15 @@ def index():
         url = f'https://www.googleapis.com/books/v1/volumes?q={title}'
         response = requests.get(url).json()
 
-        my_data = [
-            {
-                'book_title': response['items'][0]['volumeInfo']['title'],
-                'price' : response['items'][0]['saleInfo']['listPrice']['amount'],
-                'totalbooks': response['totalItems']
-            }
+        data = {
+            'total_books' : response['totalItems'],
+            'book_title' :response['items'][0]['volumeInfo']['title'],
+            #'price' : response['items'][0]['saleInfo']['listPrice']['amount']
+        }
+        return render_template('index.html',data=data)
+    return render_template('index.html', data = {'None': 'None'})
 
-        
-
-
-        ]
-        return render_template('index.html',my_data=my_data)
-    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
